@@ -8,8 +8,6 @@ spring:
     database: mysql
     hibernate:
       ddl-auto: ${DB_DDL_AUTO}
-      naming:
-        physical-strategy: com.hoo.auth.adapter.out.persistence.config.HibernateCustomNamingStrategy
     properties:
       hibernate:
         show_sql: ${DB_SHOW_SQL}
