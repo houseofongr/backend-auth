@@ -5,10 +5,11 @@ plugins {
 
 dependencies {
     implementation project(":modules:adapters:in:web")
+    implementation project(":modules:adapters:in:security-in")
     implementation project(":modules:adapters:out:persistence")
     implementation project(":modules:adapters:out:email")
     implementation project(":modules:adapters:out:cache")
-    implementation project(":modules:adapters:out:security")
+    implementation project(":modules:adapters:out:security-out")
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 }

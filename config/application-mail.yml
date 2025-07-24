@@ -14,3 +14,9 @@ spring:
           connectiontimeout: 5000
           timeout: 5000
           writetimeout: 5000
+email:
+  authn:
+    code:
+      ttl: ${MAIL_AUTHN_CODE_TTL}
+    status:
+      ttl: ${MAIL_AUTHN_STATUS_TTL}

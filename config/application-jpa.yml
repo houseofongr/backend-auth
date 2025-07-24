@@ -1,15 +1,15 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${AUTH_DB_USER}
-    password: ${AUTH_DB_PASSWORD}
-    url: jdbc:mysql://${AUTH_DB_ADDRESS}:${AUTH_DB_PORT}/${AUTH_DB_SCHEME}?serverTimezone=${AUTH_DB_TIMEZONE}
+    username: ${MYSQL_DB_USER}
+    password: ${MYSQL_DB_PASSWORD}
+    url: jdbc:mysql://${MYSQL_DB_ADDRESS}:${MYSQL_DB_PORT}/${MYSQL_DB_SCHEME}?serverTimezone=${MYSQL_DB_TIMEZONE}
   jpa:
     database: mysql
     hibernate:
-      ddl-auto: ${DB_DDL_AUTO}
+      ddl-auto: ${JPA_DDL_AUTO}
     properties:
       hibernate:
-        show_sql: ${DB_SHOW_SQL}
-        format_sql: ${DB_FORMAT_SQL}
-        default_batch_fetch_size: ${DB_DEFAULT_BATCH_FETCH_SIZE}
+        show_sql: ${JPA_SHOW_SQL}
+        format_sql: ${JPA_FORMAT_SQL}
+        default_batch_fetch_size: ${JPA_DEFAULT_BATCH_FETCH_SIZE}

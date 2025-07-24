@@ -1,5 +1,5 @@
 server:
-  port: ${AUTH_PORT}
+  port: ${SERVER_PORT}
 
 spring:
   config:
