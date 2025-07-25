@@ -1,10 +1,5 @@
 storage:
   endpoint: ${MINIO_ENDPOINT}
-  bucket:
-    media: media-files
-    document: document-files
-    log: system-logs
-    backup: system-backup
   access-key: ${MINIO_ACCESS_KEY}
   secret-key: ${MINIO_SECRET_KEY}
   part-size: ${MINIO_PART_SIZE}
