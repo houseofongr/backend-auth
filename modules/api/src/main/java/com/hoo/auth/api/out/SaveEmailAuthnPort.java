@@ -1,7 +1,7 @@
 package com.hoo.auth.api.out;
 
 public interface SaveEmailAuthnPort {
-    Integer saveEmailAuthnCode(String email, String code);
+    void saveEmailAuthnCode(String email, String code, Integer ttl);
 
-    Integer saveAuthenticateStatus(String email);
+    void saveAuthenticateStatus(String email, Boolean isAuthenticated, Integer ttl);
 }

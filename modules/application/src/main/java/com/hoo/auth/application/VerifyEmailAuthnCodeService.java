@@ -17,6 +17,7 @@ public class VerifyEmailAuthnCodeService implements VerifyEmailAuthnCodeUseCase 
 
     private final LoadEmailAuthnPort loadEmailAuthnPort;
     private final SaveEmailAuthnPort saveEmailAuthnPort;
+    private final ApplicationProperties applicationProperties;
 
     @Override
     public VerifyEmailAuthnCodeResult verify(String email, String code) {
@@ -26,7 +27,8 @@ public class VerifyEmailAuthnCodeService implements VerifyEmailAuthnCodeUseCase 
         if (!Objects.equals(codeInCache, code))
             throw new AuthApplicationException(ApplicationErrorCode.EMAIL_CODE_AUTHENTICATION_FAILED);
 
-        Integer ttl = saveEmailAuthnPort.saveAuthenticateStatus(email);
+        Integer ttl = applicationProperties.statusTtl();
+        saveEmailAuthnPort.saveAuthenticateStatus(email, true, ttl);
 
         return new VerifyEmailAuthnCodeResult("이메일 인증에 성공했습니다.", ttl);
     }

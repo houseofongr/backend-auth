@@ -11,8 +11,9 @@ class CreateEmailAuthnCodeServiceTest {
 
     SaveEmailAuthnPort saveEmailAuthnPort = mock();
     SendAuthnCodePort sendAuthnCodePort = mock();
+    ApplicationProperties applicationProperties = mock();
 
-    CreateEmailAuthnCodeService sut = new CreateEmailAuthnCodeService(saveEmailAuthnPort, sendAuthnCodePort);
+    CreateEmailAuthnCodeService sut = new CreateEmailAuthnCodeService(saveEmailAuthnPort, sendAuthnCodePort, applicationProperties);
 
     @Test
     @DisplayName("이메일 인증 코드 생성 서비스")
@@ -25,7 +26,7 @@ class CreateEmailAuthnCodeServiceTest {
 
         // then
         verify(sendAuthnCodePort, times(1)).sendAuthnCode(anyString(), anyString());
-        verify(saveEmailAuthnPort, times(1)).saveEmailAuthnCode(anyString(), anyString());
+        verify(saveEmailAuthnPort, times(1)).saveEmailAuthnCode(anyString(), anyString(), anyInt());
     }
 
 }

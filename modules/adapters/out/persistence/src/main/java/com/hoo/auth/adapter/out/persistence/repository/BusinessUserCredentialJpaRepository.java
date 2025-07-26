@@ -4,4 +4,5 @@ import com.hoo.auth.adapter.out.persistence.entity.BusinessUserCredentialJpaEnti
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BusinessUserCredentialJpaRepository extends JpaRepository<BusinessUserCredentialJpaEntity, Long> {
+    boolean existsByEmail(String email);
 }

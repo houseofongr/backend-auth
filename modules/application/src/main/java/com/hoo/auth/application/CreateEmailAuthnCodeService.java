@@ -16,6 +16,7 @@ public class CreateEmailAuthnCodeService implements CreateEmailAuthnCodeUseCase 
 
     private final SaveEmailAuthnPort saveEmailAuthnPort;
     private final SendAuthnCodePort sendAuthnCodePort;
+    private final ApplicationProperties applicationProperties;
 
     @Override
     public CreateEmailAuthnCodeResult createEmailAuthnCode(String email) {
@@ -25,7 +26,9 @@ public class CreateEmailAuthnCodeService implements CreateEmailAuthnCodeUseCase 
         EmailAuthnCode emailAuthnCode = EmailAuthnCode.create();
 
         sendAuthnCodePort.sendAuthnCode(email, emailAuthnCode.getCode());
-        Integer ttl = saveEmailAuthnPort.saveEmailAuthnCode(email, emailAuthnCode.getCode());
+
+        Integer ttl = applicationProperties.codeTtl();
+        saveEmailAuthnPort.saveEmailAuthnCode(email, emailAuthnCode.getCode(), ttl);
 
         return new CreateEmailAuthnCodeResult(
                 String.format("[이메일 : %s]로 인증코드 전송이 완료되었습니다.", email),

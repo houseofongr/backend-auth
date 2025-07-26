@@ -23,9 +23,7 @@ import static org.springframework.http.HttpStatus.*;
 @AllArgsConstructor
 public enum AdapterErrorCode implements ErrorCode {
 
-    USER_NOT_FOUND("UNIVERSE-PRESENTATION-300", NOT_FOUND, "해당 유저를 찾을 수 없습니다."),
-
-    LOAD_ENTITY_FAILED_BY_DOMAIN_ID("UNIVERSE-PRESENTATION-500", INTERNAL_SERVER_ERROR, "도메인 객체의 ID를 통해 엔티티를 불러오는데 실패했습니다.");
+    NICKNAME_DUPLICATED("AUTH-PERSISTENCE-400", CONFLICT, "이미 등록된 email입니다.");
 
     private final String code;
     private final HttpStatus status;

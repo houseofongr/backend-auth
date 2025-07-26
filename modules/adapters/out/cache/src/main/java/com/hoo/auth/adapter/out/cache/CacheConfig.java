@@ -1,6 +1,5 @@
 package com.hoo.auth.adapter.out.cache;
 
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -8,15 +7,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
-@EnableConfigurationProperties(EmailProperties.class)
 public class CacheConfig {
 
     @Bean
     public RedisAdapter redisCacheAdapter(
-            RedisTemplate<String, String> redisTemplate,
-            EmailProperties emailProperties
+            RedisTemplate<String, String> redisTemplate
     ) {
-        return new RedisAdapter(redisTemplate, emailProperties);
+        return new RedisAdapter(redisTemplate);
     }
 
     @Bean

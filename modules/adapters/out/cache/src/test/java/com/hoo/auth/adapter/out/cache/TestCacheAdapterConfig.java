@@ -13,10 +13,9 @@ public class TestCacheAdapterConfig {
 
     @Bean
     public RedisAdapter redisCacheAdapter(
-            RedisTemplate<String, String> redisTemplate,
-            EmailProperties emailProperties
+            RedisTemplate<String, String> redisTemplate
     ) {
-        return new RedisAdapter(redisTemplate, emailProperties);
+        return new RedisAdapter(redisTemplate);
     }
 
     @Bean

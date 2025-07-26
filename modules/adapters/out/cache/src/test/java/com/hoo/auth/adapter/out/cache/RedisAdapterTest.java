@@ -34,7 +34,7 @@ class RedisAdapterTest {
         String code = "123456";
 
         // when
-        sut.saveEmailAuthnCode(email, code);
+        sut.saveEmailAuthnCode(email, code, 600);
 
         // then
         assertThat(redisTemplate.opsForValue().get(EMAIL_AUTHN_CODE_PREFIX.getKey() + email)).isEqualTo(code);
@@ -47,7 +47,7 @@ class RedisAdapterTest {
         // given
         String email = "test@example.com";
         String code = "123456";
-        sut.saveEmailAuthnCode(email, code);
+        sut.saveEmailAuthnCode(email, code, 600);
 
         // when
         String result = sut.loadEmailAuthnCode(email);
@@ -63,7 +63,7 @@ class RedisAdapterTest {
         String email = "test@example.com";
 
         // when
-        sut.saveAuthenticateStatus(email);
+        sut.saveAuthenticateStatus(email, true, 3600);
 
         // then
         assertThat(redisTemplate.opsForValue().get(EMAIL_AUTHN_STATUS_PREFIX.getKey() + email)).isEqualTo(EMAIL_AUTHENTICATED.getKey());
@@ -80,9 +80,23 @@ class RedisAdapterTest {
         assertThat(sut.isAuthenticated(email)).isFalse();
 
         // when 2 : saved
-        sut.saveAuthenticateStatus(email);
+        sut.saveAuthenticateStatus(email, true, 3600);
 
         // then
         assertThat(sut.isAuthenticated(email)).isTrue();
+    }
+
+    @Test
+    @DisplayName("이메일 인증 삭제 테스트")
+    void testDeleteAuthnStatus() {
+        // given
+        String email = "test@example.com";
+
+        sut.saveAuthenticateStatus(email, true, 3600);
+        assertThat(sut.isAuthenticated(email)).isTrue();
+
+        sut.saveAuthenticateStatus(email, false, null);
+        assertThat(sut.isAuthenticated(email)).isFalse();
+
     }
 }

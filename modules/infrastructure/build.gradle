@@ -9,6 +9,7 @@ bootJar {
 }
 
 dependencies {
+    implementation project(":modules:application")
     implementation project(":modules:adapters:in:web")
     implementation project(":modules:adapters:in:security-in")
     implementation project(":modules:adapters:out:persistence")

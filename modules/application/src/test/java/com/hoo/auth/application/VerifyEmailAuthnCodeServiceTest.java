@@ -12,8 +12,9 @@ class VerifyEmailAuthnCodeServiceTest {
 
     private LoadEmailAuthnPort loadEmailAuthnPort = mock();
     private SaveEmailAuthnPort saveEmailAuthnPort = mock();
+    ApplicationProperties applicationProperties = mock();
 
-    VerifyEmailAuthnCodeService sut = new VerifyEmailAuthnCodeService(loadEmailAuthnPort, saveEmailAuthnPort);
+    VerifyEmailAuthnCodeService sut = new VerifyEmailAuthnCodeService(loadEmailAuthnPort, saveEmailAuthnPort, applicationProperties);
 
     @Test
     @DisplayName("이메일 인증 코드 확인 서비스")
@@ -27,6 +28,6 @@ class VerifyEmailAuthnCodeServiceTest {
         sut.verify(email, code);
 
         // then
-        verify(saveEmailAuthnPort, times(1)).saveAuthenticateStatus(anyString());
+        verify(saveEmailAuthnPort, times(1)).saveAuthenticateStatus(anyString(), anyBoolean(), anyInt());
     }
 }

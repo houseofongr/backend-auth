@@ -15,7 +15,6 @@ import static com.hoo.common.enums.CacheKeys.*;
 public class RedisAdapter implements SaveEmailAuthnPort, LoadEmailAuthnPort {
 
     private final RedisTemplate<String, String> redisTemplate;
-    private final EmailProperties emailProperties;
 
     @Override
     public String loadEmailAuthnCode(String email) {
@@ -28,21 +27,15 @@ public class RedisAdapter implements SaveEmailAuthnPort, LoadEmailAuthnPort {
     }
 
     @Override
-    public Integer saveEmailAuthnCode(String email, String code) {
-
-        Integer ttl = emailProperties.authn().code().ttl();
+    public void saveEmailAuthnCode(String email, String code, Integer ttl) {
         valueOperations().set(EMAIL_AUTHN_CODE_PREFIX.getKey() + email, code, Duration.ofSeconds(ttl));
-
-        return ttl;
     }
 
     @Override
-    public Integer saveAuthenticateStatus(String email) {
-
-        Integer ttl = emailProperties.authn().status().ttl();
-        valueOperations().set(EMAIL_AUTHN_STATUS_PREFIX.getKey() + email, EMAIL_AUTHENTICATED.getKey(), Duration.ofSeconds(ttl));
-
-        return ttl;
+    public void saveAuthenticateStatus(String email, Boolean isAuthenticated, Integer ttl) {
+        if (isAuthenticated)
+            valueOperations().set(EMAIL_AUTHN_STATUS_PREFIX.getKey() + email, EMAIL_AUTHENTICATED.getKey(), Duration.ofSeconds(ttl));
+        else redisTemplate.delete(EMAIL_AUTHN_STATUS_PREFIX.getKey() + email);
     }
 
     private ValueOperations<String, String> valueOperations() {
