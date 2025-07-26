@@ -9,8 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityOutConfig {
 
     @Bean
-    SpringSecurityEncryptAdapter springSecurityEncryptAdapter(PasswordEncoder passwordEncoder) {
-        return new SpringSecurityEncryptAdapter(passwordEncoder);
+    SpringSecurityAdapter springSecurityEncryptAdapter(PasswordEncoder passwordEncoder) {
+        return new SpringSecurityAdapter(passwordEncoder);
     }
 
     @Bean

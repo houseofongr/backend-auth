@@ -7,16 +7,16 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 public class AuthDomainException extends RuntimeException {
 
-    private final DomainErrorCode error;
+    private final ErrorCode error;
     private final String message;
 
-    public AuthDomainException(DomainErrorCode error) {
+    public AuthDomainException(ErrorCode error) {
         log.error("Application Error : {}", error.getMessage());
         this.error = error;
         this.message = error.getMessage();
     }
 
-    public AuthDomainException(DomainErrorCode error, String message) {
+    public AuthDomainException(ErrorCode error, String message) {
         log.error("Application Error : {}", message);
         this.error = error;
         this.message = message;

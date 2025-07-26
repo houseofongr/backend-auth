@@ -6,7 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 @RequiredArgsConstructor
-public class SpringEmailAdapter implements SendAuthnCodePort {
+public class JavaMailAdapter implements SendAuthnCodePort {
 
     private final JavaMailSender javaMailSender;
 

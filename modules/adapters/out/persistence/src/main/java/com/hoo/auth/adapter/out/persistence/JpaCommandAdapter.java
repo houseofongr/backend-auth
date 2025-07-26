@@ -7,7 +7,7 @@ import com.hoo.auth.domain.BusinessUserCredential;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class BusinessUserCredentialJpaAdapter implements SaveBusinessUserCredentialPort {
+public class JpaCommandAdapter implements SaveBusinessUserCredentialPort {
 
     private final BusinessUserCredentialJpaRepository businessUserCredentialJpaRepository;
     private final PersistenceMapper persistenceMapper;

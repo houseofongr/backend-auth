@@ -10,11 +10,11 @@ import java.util.Properties;
 
 @Configuration
 @EnableConfigurationProperties(EmailProperties.class)
-public class EmailAdapterConfig {
+public class EmailConfig {
 
     @Bean
-    public SpringEmailAdapter emailAdapter(JavaMailSender javaMailSender) {
-        return new SpringEmailAdapter(javaMailSender);
+    public JavaMailAdapter emailAdapter(JavaMailSender javaMailSender) {
+        return new JavaMailAdapter(javaMailSender);
     }
 
     @Bean

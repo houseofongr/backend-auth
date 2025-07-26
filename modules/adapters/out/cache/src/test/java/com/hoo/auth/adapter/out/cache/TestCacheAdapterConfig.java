@@ -12,11 +12,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class TestCacheAdapterConfig {
 
     @Bean
-    public RedisCacheAdapter redisCacheAdapter(
+    public RedisAdapter redisCacheAdapter(
             RedisTemplate<String, String> redisTemplate,
             EmailProperties emailProperties
     ) {
-        return new RedisCacheAdapter(redisTemplate, emailProperties);
+        return new RedisAdapter(redisTemplate, emailProperties);
     }
 
     @Bean

@@ -1,15 +1,15 @@
 internal:
   gateway:
-    base-url: ${INTERNAL_GATEWAY_ADDRESS}:${INTERNAL_GATEWAY_PORT}
+    base-url: http://${INTERNAL_GATEWAY_ADDRESS}:${INTERNAL_GATEWAY_PORT}
   auth:
-    base-url: ${INTERNAL_AUTH_ADDRESS}:${INTERNAL_AUTH_PORT}
+    base-url: http://${INTERNAL_AUTH_ADDRESS}:${INTERNAL_AUTH_PORT}
     register-business-user-credential: /auth/register/business-user
   file:
-    base-url: ${INTERNAL_FILE_ADDRESS}:${INTERNAL_FILE_PORT}
+    base-url: http://${INTERNAL_FILE_ADDRESS}:${INTERNAL_FILE_PORT}
     upload-file-url: /files/upload
     get-file-info-url: /files/%s/info
   user:
-    base-url: ${INTERNAL_USER_ADDRESS}:${INTERNAL_USER_PORT}
+    base-url: http://${INTERNAL_USER_ADDRESS}:${INTERNAL_USER_PORT}
     get-user-info-url: /users/%s/info
   universe:
-    base-url: ${INTERNAL_UNIVERSE_ADDRESS}:${INTERNAL_UNIVERSE_PORT}
+    base-url: http://${INTERNAL_UNIVERSE_ADDRESS}:${INTERNAL_UNIVERSE_PORT}

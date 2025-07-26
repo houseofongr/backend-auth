@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RequiredArgsConstructor
-public class SpringSecurityEncryptAdapter implements EncryptPort {
+public class SpringSecurityAdapter implements EncryptPort {
 
     private final PasswordEncoder passwordEncoder;
 

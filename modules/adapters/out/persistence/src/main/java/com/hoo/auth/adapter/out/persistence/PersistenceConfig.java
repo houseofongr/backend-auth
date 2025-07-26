@@ -14,11 +14,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class PersistenceConfig {
 
     @Bean
-    public BusinessUserCredentialJpaAdapter businessUserCredentialJpaAdapter(
+    public JpaCommandAdapter businessUserCredentialJpaAdapter(
             BusinessUserCredentialJpaRepository businessUserCredentialJpaRepository,
             PersistenceMapper persistenceMapper
     ) {
-        return new BusinessUserCredentialJpaAdapter(businessUserCredentialJpaRepository, persistenceMapper);
+        return new JpaCommandAdapter(businessUserCredentialJpaRepository, persistenceMapper);
     }
 
     @Bean

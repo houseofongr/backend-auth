@@ -9,10 +9,10 @@ import org.springframework.data.redis.core.ValueOperations;
 import java.time.Duration;
 import java.util.Objects;
 
-import static com.hoo.auth.adapter.out.cache.RedisKeys.*;
+import static com.hoo.common.enums.CacheKeys.*;
 
 @RequiredArgsConstructor
-public class RedisCacheAdapter implements SaveEmailAuthnPort, LoadEmailAuthnPort {
+public class RedisAdapter implements SaveEmailAuthnPort, LoadEmailAuthnPort {
 
     private final RedisTemplate<String, String> redisTemplate;
     private final EmailProperties emailProperties;

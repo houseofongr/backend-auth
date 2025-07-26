@@ -9,14 +9,14 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 @EnableConfigurationProperties(EmailProperties.class)
-public class CacheAdapterConfig {
+public class CacheConfig {
 
     @Bean
-    public RedisCacheAdapter redisCacheAdapter(
+    public RedisAdapter redisCacheAdapter(
             RedisTemplate<String, String> redisTemplate,
             EmailProperties emailProperties
     ) {
-        return new RedisCacheAdapter(redisTemplate, emailProperties);
+        return new RedisAdapter(redisTemplate, emailProperties);
     }
 
     @Bean

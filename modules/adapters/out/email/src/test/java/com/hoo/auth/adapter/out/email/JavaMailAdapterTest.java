@@ -9,10 +9,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-class SpringEmailAdapterTest {
+class JavaMailAdapterTest {
 
     JavaMailSender mailSender = mock();
-    SpringEmailAdapter sut = new SpringEmailAdapter(mailSender);
+    JavaMailAdapter sut = new JavaMailAdapter(mailSender);
 
     @Test
     @DisplayName("인증번호 전송 테스트")
